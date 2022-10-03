@@ -1,0 +1,60 @@
+define			= -DPOSRES_XY
+integrator              = md
+dt                      = 0.002
+nsteps                  = 7000000
+nstxtcout               = 50000
+nstvout                 = 50000
+nstfout                 = 50000
+nstcalcenergy           = 50000
+nstenergy               = 50000
+nstlog                  = 50000
+;
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.2
+coulombtype             = pme
+rcoulomb                = 1.2
+vdwtype                 = Cut-off
+vdw-modifier            = Force-switch
+rvdw_switch             = 1.0
+rvdw                    = 1.2
+;
+tcoupl	= V-rescale
+tc_grps	= POPC_Protein Water_and_Ions
+tau_t = 1.0 1.0
+ref_t = 310 310
+;
+pcoupl  = Parrinello-Rahman
+pcoupltype              = semiisotropic 
+tau_p                   = 12.0
+compressibility         = 4.5e-5  4.5e-5
+ref_p                   = 1.0     1.0
+;
+constraints             = h-bonds
+constraint_algorithm    = LINCS
+continuation            = yes
+;
+nstcomm                 = 100
+comm_mode               = linear
+comm_grps = POPC_Protein Water_and_Ions
+;
+refcoord_scaling        = com
+
+;Pull
+pull			= yes
+pull-coord1-type	= umbrella
+pull-nstfout		= 100
+pull-nstxout		= 100
+pull-coord1-rate	= 0 	;nm ps-1
+pull-coord1-k		= 2000 		;kj mol-1 nm-2
+pull-coord1-geometry	= cylinder
+pull-ngroups		= 2
+pull-ncoords		= 1
+pull-group1-name	= POPC
+pull-group2-name	= Protein
+pull-coord1-vec		= 0 0 -1
+pull-cylinder-r		= 1
+pull-coord1-groups 	= 1 2
+pull-coord1-dim		= N N Y
+pull-coord1-init = -2.09
+pull-coord1-start	= no

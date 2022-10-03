@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# a script to be used to run gromacs in IT4I
+# add an executable flag
+# $ chmod +x gmx
+# in your script, replace gmx mdrun with ./gmx mdrun
+# $ sed -i 's@gmx mdrun@./gmx mdrun@g' precycle_mdrun
+
+GMX=$(type -p gmx_mpi)
+
+if [[ -z "${GMX}" ]]; then
+    echo "Error: gmx_mpi not found. You may want to 'sysmodule add GROMACS' before running 'gmx'".
+    exit 1
+fi
+
+if [[ $0 == *gmx && "$1" == "mdrun" && -n "${INF_NCPUS}" ]]; then
+    NTOMP=1
+    NTOMP_OPT="-ntomp ${NTOMP}"
+
+    echo "GROMACS parameters autoset by Infinity: ${NTOMP_OPT}"
+    echo "You may get better performance by adjusting -ntomp"
+    echo "See https://lcc.ncbr.muni.cz/whitezone/development/infinity/isoftrepo/fcgi-bin/isoftrepo.fcgi?action=module&site=compchem&module=gromacs for details"
+    echo
+
+    export OMP_PLACES=cores
+    export OMP_NUM_THREADS=${NTOMP}
+    export MALLOC_MMAP_MAX_=0
+    export MALLOC_TRIM_THRESHOLD_=268435456 # 256 MiB
+    exec mpirun -x OMP_PLACES -x OMP_NUM_THREADS -x MALLOC_MMAP_MAX_ -x MALLOC_TRIM_THRESHOLD_ -x PATH --mca opal_warn_on_missing_libcuda 0 --map-by slot:PE=${NTOMP} "${GMX}" "$@" ${NTOMP_OPT} -nice 0
+else
+    exec "${GMX}" "$@"
+fi
+

@@ -1,0 +1,237 @@
+#!/bin/bash
+# INFINITY JobType loop
+# INFINITY start   1
+# INFINITY stop    10
+# INFINITY format  md%04d
+# INFINITY afix    .step
+# INFINITY archive storage
+
+# names of compulsory input files
+MDP="us.mdp" # simulation parameters
+GRO="??.gro" # structure file
+
+# names of optional input files
+CPT="" # checkpoint file (e.g. from equilibration); leave empty if not needed
+REF="??.gro" # reference coordinates for restraints; leave empty if not needed
+
+# names of renamed input files
+NDX="" # index file; leave empty string to set default (index.ndx)
+TOP="" # topology file; leave empty string to set default (topol.top)
+
+# runtime variables
+NTOMP="" # number of OpenMP threads per MPI rank; leave empty to set default
+MAXWARN="" # maximum number of warnings; leave empty to determine automatically (gen-vel)
+
+# plumed can be used only if the module version enables it
+PLUMED="plumed.dat" # name of the plumed script; leave empty if not used
+PLUMED_THREADS="" # number of plumed openMP threads; leave empty to set default
+
+# load gromacs module
+sysmodule add GROMACS/2021.4-fosscuda-2020b-PLUMED-2.7.3
+if [ $? -ne 0 ]; then exit 1; fi  # exit if this fails
+
+########################################
+##### DO NOT EDIT BEYOND THIS LINE #####
+########################################
+############# VERSION 0.9a #############
+########################################
+
+# archive runtime files from the previous stage
+parchive runtime $INF_LOOP_START $INF_LOOP_CURRENT $INF_LOOP_FORMAT
+
+# create STAGE strings
+# CURR - prefix for the data produced in this run
+# NEXT - prefix for the restart file for the next run
+CURR="`printf $INF_LOOP_FORMAT $(($INF_LOOP_CURRENT))`"
+NEXT="`printf $INF_LOOP_FORMAT $(($INF_LOOP_CURRENT+1))`"
+
+# determine gromacs version; appending to files has been reworked in 2016 version
+GMX_VER=`gmx --version | awk 'BEGIN {i = 0} tolower($0) ~ /gromacs version/ {split($NF, N, "."); if (N[1] > 6) i = 1} END {print i}'`
+
+# set version specific appending
+if [ ${GMX_VER} -eq 0 ]; then APPEND="-append"; fi
+
+# openMP thread setup variable
+if [ ! -z ${NTOMP} ]; then
+    NTOMP="-ntomp ${NTOMP}"
+else
+    NTOMP="-ntomp 1"
+fi
+
+# plumed set up
+if [ ! -z ${PLUMED} ]; then
+
+    if [ -z ${PLUMED_THREADS} ]; then PLUMED_THREADS=1; fi
+    export PLUMED_NUM_THREADS=${PLUMED_THREADS}
+
+    # select one plumed input file
+    plumed=`ls ${PLUMED} ??/${PLUMED} 2> /dev/null | head -1`
+
+    # obtain the names of all plumed output files
+    PLUMED_TMP=`awk '
+    BEGIN {hill = ""}
+
+    /METAD \.\.\./ {a = 1; hill = "HILLS"; next}
+    /\.\.\. METAD/ {a = 0; next}
+    /METAD/ {hill = "HILLS"; b = 1}
+
+    {
+        for (i = 1; i <= NF; i++) {
+            if ($i ~ /^FILE/) {
+                n = split($i, name, "=")
+                if (a == 1 || b == 1)  { hill = name[n] }
+                else { out[++o] = name[n] }
+            }
+        }
+        b = 0
+    }
+
+    END {
+        for (key in out) printf " %s", out[key]
+        printf ":%s", hill
+    }
+    ' ${plumed}`
+
+    # plumed file names
+    PLUMED_FILES=`cut -d: -f1 <<< ${PLUMED_TMP}`
+    PLUMED_METAD=`cut -d: -f2 <<< ${PLUMED_TMP}`
+    PLUMED_metad=`tr '[:upper:]' '[:lower:]' <<< "${PLUMED_METAD}"`
+
+    # plumed variable for mdrun
+    PLUMED="-plumed ${PLUMED}"
+fi
+
+# find the first folder
+SRC=`ls -d ?? | head -1`
+
+# is this the first run or continuation?
+# get input files/coordinates
+if [ $INF_LOOP_CURRENT -eq $INF_LOOP_START ]; then
+    # optional checkpoint fils for grompp
+    if [ ! -z ${CPT} ]; then CPT="-t ${CPT}"; fi
+
+    # reference file for positional restraints
+    # mandatory in new gromacs versions
+    # will be used everytime for consistency
+    if [ ! -z ${REF} ]; then
+        REF="-r ${REF}"
+    else
+        REF="-r ${GRO}"
+    fi
+
+    # default index and topology files for grompp
+    if [ -z ${TOP} ]; then TOP="topol.top"; fi
+    if [ -z ${NDX} ] && [ -f ${SRC}/index.ndx ]; then NDX="index.ndx"; fi
+    if [ ! -z ${NDX} ]; then INDEX="-n ${NDX}"; fi
+
+    # automatically determine maxwarn based on generating velocities
+    if [ -z ${MAXWARN} ]; then
+        GEN_VEL=`awk 'BEGIN {i = 0} /gen[-_]vel/ {if (toupper($3) == "YES") i = 1} END {print i}' ${SRC}/${MDP}`
+        if [ ${GEN_VEL} -eq 0 ]; then MAXWARN=0; else MAXWARN=1; fi
+    fi
+
+    # infinity counter
+    date > ${CURR}.step
+    parchive move ${CURR}.step
+
+    # compile the tpr file
+    for DIR in ??; do
+        cd ${DIR}
+            gmx grompp -f ${MDP} -c ${GRO} ${REF} ${CPT} -p ${TOP} ${INDEX} -o ${CURR}.tpr -quiet -maxwarn ${MAXWARN}
+            if [ $? -ne 0 ]; then exit 2; fi  # exit if this fails
+
+            # archive mdout and original tpr files
+            mv mdout.mdp ${CURR}-${DIR}.mdout
+            cp ${CURR}.tpr ${CURR}-${DIR}.tpr
+            parchive move ${CURR}-${DIR}.mdout ${CURR}-${DIR}.tpr
+            if [ $? -ne 0 ]; then exit 1; fi  # exit if this fails
+        cd ..
+    done
+
+    # set version specific appending
+    if [ ${GMX_VER} -eq 1 ]; then APPEND=""; fi
+else
+    # MDRUN checkpoint file
+    CPI="-cpi ${CURR}.cpt"
+
+    # set version specific appending
+    if [ ${GMX_VER} -eq 1 ]; then APPEND="-noappend"; fi
+
+    # are we running metadynamics? obtain hill file
+    if [ ! -z ${PLUMED_METAD} ]; then PLUMED_HILL=${CURR}.${PLUMED_metad}; fi
+
+    # coordinate and input files from previous run
+    for DIR in ??; do
+        parchive get ${CURR}-${DIR}.cpt ${CURR}-${DIR}.tpr ${PLUMED_HILL}
+        if [ $? -ne 0 ]; then exit 1; fi  # exit if this fails
+
+        mv ${CURR}-${DIR}.cpt ${DIR}/${CURR}.cpt
+        mv ${CURR}-${DIR}.tpr ${DIR}/${CURR}.tpr
+        if [ ! -z ${PLUMED_HILL} ] && [ -f ${PLUMED_HILL} ]; then mv ${PLUMED_HILL} ${DIR}/${PLUMED_METAD}; fi
+    done
+fi
+
+# run the simulation
+./gmx mdrun -v -deffnm ${CURR} ${CPI} -cpo ${NEXT} -cpt 1 -pf ${CURR}_pf.xvg -px ${CURR}_px.xvg ${PLUMED} -multidir ?? -replex 2000 -hrex  ${APPEND} -quiet
+if [ $? -ne 0 ]; then exit 2; fi  # exit if this fails
+
+# rename output files from gromacs
+for DIR in ??; do
+    cd ${DIR}
+        for PART in `ls *part* 2> /dev/null`; do ARR=(`tr . " " <<< ${PART}`); mv ${PART} ${ARR[0]}.${ARR[2]}; done
+
+        mv ${CURR}.edr    ../${CURR}-${DIR}.edr    2> /dev/null
+        mv ${CURR}.gro    ../${CURR}-${DIR}.gro    2> /dev/null
+        mv ${CURR}.log    ../${CURR}-${DIR}.log    2> /dev/null
+        mv ${NEXT}.cpt    ../${NEXT}-${DIR}.cpt    2> /dev/null
+        mv ${CURR}.xtc    ../${CURR}-${DIR}.xtc    2> /dev/null
+        mv ${CURR}.trr    ../${CURR}-${DIR}.trr    2> /dev/null
+        mv ${CURR}_pf.xvg ../${CURR}-${DIR}_pf.xvg 2> /dev/null
+        mv ${CURR}_px.xvg ../${CURR}-${DIR}_px.xvg 2> /dev/null
+    cd ..
+done
+
+# rename output files from plumed
+for DIR in ??; do
+    for i in ${PLUMED_FILES}; do
+        OUT=${CURR}-${DIR}.`tr '[:upper:]' '[:lower:]' <<< "${i}"`
+        mv ${DIR}/${i}* ${OUT}
+        PLUMED_OUT="${PLUMED_OUT} ${OUT}"
+    done
+done
+
+# rename hills files from plumed metadynamics
+if [ ! -z ${PLUMED_METAD} ]; then
+    PLUMED_HILL=${NEXT}.${PLUMED_metad}
+    mv ${SRC}/${PLUMED_METAD} ${PLUMED_HILL}
+fi
+
+# select umbrella sampling output files
+XVG=`ls ${CURR}-??_p[fx].xvg 2> /dev/null`
+
+# extend the simulation
+EXTEND=`awk 'BEGIN {dt = 0.001; nsteps = 0} /nsteps/ {nsteps = $3} /dt/ {dt = $3} END {ext = nsteps * dt; if (!ext) {exit 2} else {print ext}}' ${SRC}/${MDP}`
+if [ $? -ne 0 ]; then exit 2; fi  # exit if this fails
+
+for DIR in ??; do
+    cd ${DIR}
+        gmx convert-tpr -s ${CURR}.tpr -extend ${EXTEND} -o ../${NEXT}-${DIR}.tpr -quiet
+        if [ $? -ne 0 ]; then exit 2; fi  # exit if this fails
+    cd ..
+done
+
+# select current trajectory
+TRAJ=`ls ${CURR}-??.trr ${CURR}-??.xtc 2> /dev/null`
+
+# infinity counter
+date > ${NEXT}.step
+
+# archive produced data and restart files for the next run
+parchive move ${CURR}-??.edr ${CURR}-??.gro ${CURR}-??.log ${NEXT}-??.cpt ${NEXT}-??.tpr ${TRAJ} ${XVG} ${PLUMED_HILL} ${PLUMED_OUT} ${NEXT}.step
+if [ $? -ne 0 ]; then exit 1; fi  # exit if this fails
+
+# clean already archived and other temporary data
+rm -f ${CURR}*.* ${NEXT}*.* *_prev* ??/${CURR}*.* ??/${NEXT}*.* ??/*_prev* \#* ??/\#*
+
+# resubmit job
+presubmit
