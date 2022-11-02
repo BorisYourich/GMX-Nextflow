@@ -1,0 +1,21 @@
+Nov-02 15:39:17.457 [main] DEBUG nextflow.cli.Launcher - $> nextflow kuberun 'https://github.com/BorisYourich/GMX-Nextflow'
+Nov-02 15:39:17.531 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/boris/.nextflow/plugins; core-plugins: nf-amazon@1.8.0,nf-azure@0.13.2,nf-codecommit@0.1.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.2.1,nf-sqldb@0.4.1,nf-tower@1.4.0
+Nov-02 15:39:17.539 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Nov-02 15:39:17.539 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Nov-02 15:39:17.542 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Nov-02 15:39:17.548 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Nov-02 15:39:17.557 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/boris/.nextflow/scm
+Nov-02 15:39:17.583 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Nov-02 15:39:17.608 [main] DEBUG nextflow.scm.RepositoryFactory - Git url=nextflow.scm.GitUrl(https, null, github.com, BorisYourich/GMX-Nextflow) -> config=ProviderConfig[name: github, platform: github, server: https://github.com]
+Nov-02 15:39:17.608 [main] DEBUG nextflow.scm.AssetManager - Repository URL: https://github.com/BorisYourich/GMX-Nextflow; Project: BorisYourich/GMX-Nextflow; Hub provider: github
+Nov-02 15:39:17.614 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/BorisYourich/GMX-Nextflow/contents/nextflow.config
+Nov-02 15:39:18.939 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/boris/GMX-Nextflow/nextflow.config
+Nov-02 15:39:18.943 [main] DEBUG nextflow.config.ConfigBuilder - User config file: https://github.com/BorisYourich/GMX-Nextflow/nextflow.config
+Nov-02 15:39:18.943 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/boris/GMX-Nextflow/nextflow.config
+Nov-02 15:39:18.943 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: https://github.com/BorisYourich/GMX-Nextflow/nextflow.config
+Nov-02 15:39:18.958 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Nov-02 15:39:19.390 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Nov-02 15:39:19.435 [main] DEBUG nextflow.k8s.K8sConfig - Kubernetes workDir=/home/boris/GMX-k8/tmp; projectDir=/home/boris/GMX-k8/projects; volumeClaims=[test-pvc]
+Nov-02 15:39:19.562 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/boris/.nextflow/scm
+Nov-02 15:39:19.632 [main] DEBUG nextflow.k8s.K8sDriverLauncher - Created K8s configMap with name: nf-config-deb91064
+Nov-02 15:39:23.214 [main] DEBUG nextflow.k8s.K8sDriverLauncher - Wait for job termination name=ecstatic-borg
