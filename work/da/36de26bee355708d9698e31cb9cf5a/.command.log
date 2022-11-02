@@ -1,2 +1,0 @@
-/home/boris/GMX-Nextflow/work/da/36de26bee355708d9698e31cb9cf5a/.command.sh: command substitution: line 3: syntax error near unexpected token `('
-/home/boris/GMX-Nextflow/work/da/36de26bee355708d9698e31cb9cf5a/.command.sh: command substitution: line 3: `awk 'BEGIN {i = 0} /gen[-_]vel/ {if (toupper($3) == "YES") i = 1} END {print i}' DataflowVariable(value=null)us.mdp'

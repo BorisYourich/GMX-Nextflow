@@ -1,6 +1,0 @@
-Replacing old mdp entry 'nstxtcout' by 'nstxout-compressed'
-
-NOTE 1 [file /home/boris/GMX-Nextflow/RE/08/us.mdp]:
-  nstcomm < nstcalcenergy defeats the purpose of nstcalcenergy, setting
-  nstcomm to nstcalcenergy
-

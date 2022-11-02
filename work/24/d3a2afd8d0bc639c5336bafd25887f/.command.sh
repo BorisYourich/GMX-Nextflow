@@ -1,2 +1,0 @@
-#!/bin/bash -ue
-gmx mdrun -v -deffnm /home/boris/GMX-NextflowRE/cheeky_rosalind             -cpo /home/boris/GMX-NextflowRE/cheeky_rosalind            -cpt 1 -pf /home/boris/GMX-NextflowRE/cheeky_rosalind_pf.xvg            -px /home/boris/GMX-NextflowRE/cheeky_rosalind_px.xvg            -plumed /home/boris/GMX-NextflowRE/plumed.dat            -multidir /home/boris/GMX-NextflowRE/??            -replex 2000 -hrex -noappend -quiet
