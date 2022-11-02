@@ -1,0 +1,14 @@
+Replacing old mdp entry 'nstxtcout' by 'nstxout-compressed'
+
+NOTE 1 [file /home/boris/GMX-Nextflow/RE/06/us.mdp]:
+  nstcomm < nstcalcenergy defeats the purpose of nstcalcenergy, setting
+  nstcomm to nstcalcenergy
+
+Generating 1-4 interactions: fudge = 1
+
+NOTE 2 [file topol.top, line 876]:
+  You are combining position restraints with Parrinello-Rahman pressure
+  coupling, which can lead to instabilities. If you really want to combine
+  position restraints with pressure coupling, we suggest to use Berendsen
+  pressure coupling instead.
+

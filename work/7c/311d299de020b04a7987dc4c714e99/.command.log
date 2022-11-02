@@ -1,0 +1,16 @@
+awk: read error (Is a directory)
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 19: /home/boris/GMX-Nextflow/RE/02/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 20: /home/boris/GMX-Nextflow/RE/03/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 21: /home/boris/GMX-Nextflow/RE/04/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 22: /home/boris/GMX-Nextflow/RE/05/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 23: /home/boris/GMX-Nextflow/RE/06/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 24: /home/boris/GMX-Nextflow/RE/07/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 25: /home/boris/GMX-Nextflow/RE/08/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 26: /home/boris/GMX-Nextflow/RE/09/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 27: /home/boris/GMX-Nextflow/RE/10/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 28: /home/boris/GMX-Nextflow/RE/11/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 29: /home/boris/GMX-Nextflow/RE/12/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 30: /home/boris/GMX-Nextflow/RE/13/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 31: /home/boris/GMX-Nextflow/RE/14/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 32: /home/boris/GMX-Nextflow/RE/15/: Is a directory
+/home/boris/GMX-Nextflow/work/7c/311d299de020b04a7987dc4c714e99/.command.sh: line 33: us.mdp: command not found

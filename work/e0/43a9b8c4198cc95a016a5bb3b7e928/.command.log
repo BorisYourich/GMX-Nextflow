@@ -1,0 +1,28 @@
+Setting the LD random seed to -891420737
+Replacing old mdp entry 'nstxtcout' by 'nstxout-compressed'
+
+NOTE 1 [file /home/boris/GMX-Nextflow/RE/01/us.mdp]:
+  nstcomm < nstcalcenergy defeats the purpose of nstcalcenergy, setting
+  nstcomm to nstcalcenergy
+
+
+Generated 100032 of the 100128 non-bonded parameter combinations
+Generating 1-4 interactions: fudge = 1
+
+Generated 65937 of the 100128 1-4 parameter combinations
+
+-------------------------------------------------------
+Program:     gmx grompp, version 2021-MODIFIED
+Source file: src/gromacs/gmxpreprocess/gmxcpp.cpp (line 298)
+
+Fatal error:
+Topology include file "dihre_peptide.itp" not found
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+[unset]: write_line error; fd=-1 buf=:cmd=abort exitcode=1
+:
+system msg for write_line failure : Bad file descriptor
+Error response from daemon: Cannot kill container: nxf-1gkMBRnFrpzKl4FLY8V0xK7D: Container 464b6f39ca215c0425518ef110127643b0a0bfa30037a7cee55c3cb40479303a is not running

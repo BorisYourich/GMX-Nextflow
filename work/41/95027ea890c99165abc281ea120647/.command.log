@@ -1,0 +1,42 @@
+Replacing old mdp entry 'nstxtcout' by 'nstxout-compressed'
+
+NOTE 1 [file /home/boris/GMX-Nextflow/RE/12/us.mdp]:
+  nstcomm < nstcalcenergy defeats the purpose of nstcalcenergy, setting
+  nstcomm to nstcalcenergy
+
+Setting the LD random seed to 2147467231
+
+Generated 100032 of the 100128 non-bonded parameter combinations
+Generating 1-4 interactions: fudge = 1
+
+Generated 65937 of the 100128 1-4 parameter combinations
+
+Excluding 3 bonded neighbours molecule type 'POPC'
+
+turning H bonds into constraints...
+
+Excluding 3 bonded neighbours molecule type 'Protein_chain_P'
+
+turning H bonds into constraints...
+
+Excluding 2 bonded neighbours molecule type 'SOL'
+
+turning H bonds into constraints...
+
+Excluding 1 bonded neighbours molecule type 'NA'
+
+turning H bonds into constraints...
+
+Excluding 1 bonded neighbours molecule type 'CL'
+
+turning H bonds into constraints...
+
+NOTE 2 [file topol.top, line 876]:
+  You are combining position restraints with Parrinello-Rahman pressure
+  coupling, which can lead to instabilities. If you really want to combine
+  position restraints with pressure coupling, we suggest to use Berendsen
+  pressure coupling instead.
+
+
+The center of mass of the position restraint coord's is  5.648  5.754  7.611
+nxf-oL9fc0r5Al3eTcbYkN8FefIY

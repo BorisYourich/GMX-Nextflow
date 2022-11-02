@@ -1,0 +1,59 @@
+Reading file furious_celsius.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file furious_celsius.tpr, VERSION 2021-MODIFIED (single precision)
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2021-MODIFIED
+Source file: src/gromacs/utility/futil.cpp (line 481)
+MPI rank:    8 (out of 15)
+
+File input/output error:
+furious_celsius.tpr
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+Reading file furious_celsius.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file furious_celsius.tpr, VERSION 2021-MODIFIED (single precision)
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2021-MODIFIED
+Source file: src/gromacs/utility/futil.cpp (line 481)
+MPI rank:    9 (out of 15)
+
+File input/output error:
+furious_celsius.tpr
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 9
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2021-MODIFIED
+Source file: src/gromacs/utility/futil.cpp (line 481)
+MPI rank:    10 (out of 15)
+
+File input/output error:
+furious_celsius.tpr
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 10
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2021-MODIFIED
+Source file: src/gromacs/utility/futil.cpp (line 481)
+MPI rank:    11 (out of 15)
+
+File input/output error:
+furious_celsius.tpr
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 11
+Reading file furious_celsius.tpr, VERSION 2021-MODIFIED (single precision)
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 8
+Reading file furious_celsius.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file furious_celsius.tpr, VERSION 2021-MODIFIED (single precision)

@@ -1,0 +1,23 @@
+Reading file distracted_marconi.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file distracted_marconi.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file distracted_marconi.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file distracted_marconi.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file distracted_marconi.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file distracted_marconi.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file distracted_marconi.tpr, VERSION 2021-MODIFIED (single precision)
+Reading file distracted_marconi.tpr, VERSION 2021-MODIFIED (single precision)
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2021-MODIFIED
+Source file: src/gromacs/utility/futil.cpp (line 481)
+MPI rank:    8 (out of 15)
+
+File input/output error:
+distracted_marconi.tpr
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+
+-------------------------------------------------------
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 8

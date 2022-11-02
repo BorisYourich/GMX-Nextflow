@@ -1,0 +1,8 @@
+Replacing old mdp entry 'nstxtcout' by 'nstxout-compressed'
+Setting the LD random seed to -320667908
+
+NOTE 1 [file /home/boris/GMX-Nextflow/RE/14/us.mdp]:
+  nstcomm < nstcalcenergy defeats the purpose of nstcalcenergy, setting
+  nstcomm to nstcalcenergy
+
+nxf-SbOhZrBWNdpGe7AGbdCUP7cZ

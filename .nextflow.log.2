@@ -1,0 +1,152 @@
+Nov-02 13:59:44.439 [main] DEBUG nextflow.cli.Launcher - $> nextflow precy2.nf
+Nov-02 13:59:44.529 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.06.1-edge
+Nov-02 13:59:44.540 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/boris/.nextflow/plugins; core-plugins: nf-amazon@1.8.0,nf-azure@0.13.2,nf-codecommit@0.1.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.2.1,nf-sqldb@0.4.1,nf-tower@1.4.0
+Nov-02 13:59:44.549 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Nov-02 13:59:44.550 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Nov-02 13:59:44.552 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Nov-02 13:59:44.558 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Nov-02 13:59:44.571 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/boris/GMX-Nextflow/nextflow.config
+Nov-02 13:59:44.572 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/boris/GMX-Nextflow/nextflow.config
+Nov-02 13:59:44.585 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Nov-02 13:59:45.022 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Nov-02 13:59:45.039 [main] INFO  nextflow.cli.CmdRun - Launching `null` [angry_kalman] DSL2 - revision: a99669e771
+Nov-02 13:59:45.039 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Nov-02 13:59:45.080 [main] DEBUG nextflow.Session - Session uuid: e6227ba6-29c7-4840-b8e4-1775943ca392
+Nov-02 13:59:45.080 [main] DEBUG nextflow.Session - Run name: angry_kalman
+Nov-02 13:59:45.080 [main] DEBUG nextflow.Session - Executor pool size: 8
+Nov-02 13:59:45.105 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.06.1-edge build 5715
+  Created: 29-09-2022 12:49 UTC (14:49 CEST)
+  System: Linux 5.15.0-52-generic
+  Runtime: Groovy 3.0.10 on OpenJDK 64-Bit Server VM 11.0.16+8-post-Ubuntu-0ubuntu122.04
+  Encoding: UTF-8 (UTF-8)
+  Process: 111899@boris-G3-3579 [127.0.1.1]
+  CPUs: 8 - Mem: 7.6 GB (2 GB) - Swap: 2 GB (1.6 GB)
+Nov-02 13:59:45.121 [main] DEBUG nextflow.Session - Work-dir: /home/boris/GMX-Nextflow/work [ext2/ext3]
+Nov-02 13:59:45.122 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/boris/GMX-Nextflow/bin
+Nov-02 13:59:45.131 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Nov-02 13:59:45.139 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Nov-02 13:59:45.155 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Nov-02 13:59:45.162 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Nov-02 13:59:45.227 [main] DEBUG nextflow.Session - Session start invoked
+Nov-02 13:59:45.476 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Nov-02 13:59:45.563 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-02 13:59:45.563 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-02 13:59:45.567 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Nov-02 13:59:45.571 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=7.6 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Nov-02 13:59:45.684 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-02 13:59:45.684 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-02 13:59:45.692 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Nov-02 13:59:45.692 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Nov-02 13:59:45.699 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: grompp, get_replicas, mdrun
+Nov-02 13:59:45.700 [main] DEBUG nextflow.Session - Ignite dataflow network (3)
+Nov-02 13:59:45.700 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > get_replicas
+Nov-02 13:59:45.700 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > grompp
+Nov-02 13:59:45.701 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mdrun
+Nov-02 13:59:45.701 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Nov-02 13:59:45.701 [main] DEBUG nextflow.Session - Session await
+Nov-02 13:59:45.813 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:45.817 [Task submitter] INFO  nextflow.Session - [fe/ce1f57] Submitted process > get_replicas
+Nov-02 13:59:47.624 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: get_replicas; status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/fe/ce1f57d2e10fc0a738fc565b612dac]
+Nov-02 13:59:47.680 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:47.681 [Task submitter] INFO  nextflow.Session - [71/7a7a5e] Submitted process > grompp (4)
+Nov-02 13:59:47.693 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:47.693 [Task submitter] INFO  nextflow.Session - [f0/189e44] Submitted process > grompp (7)
+Nov-02 13:59:47.698 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:47.699 [Task submitter] INFO  nextflow.Session - [ba/ed4977] Submitted process > grompp (1)
+Nov-02 13:59:47.704 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:47.704 [Task submitter] INFO  nextflow.Session - [61/699df4] Submitted process > grompp (5)
+Nov-02 13:59:47.709 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:47.710 [Task submitter] INFO  nextflow.Session - [19/c3a966] Submitted process > grompp (3)
+Nov-02 13:59:47.715 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:47.716 [Task submitter] INFO  nextflow.Session - [50/4ad8d0] Submitted process > grompp (2)
+Nov-02 13:59:47.722 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:47.724 [Task submitter] INFO  nextflow.Session - [3a/5a6cef] Submitted process > grompp (9)
+Nov-02 13:59:47.729 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:47.730 [Task submitter] INFO  nextflow.Session - [4d/2469fd] Submitted process > grompp (10)
+Nov-02 13:59:57.380 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: grompp (2); status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/50/4ad8d01d9b7f1ccb816552670fe450]
+Nov-02 13:59:57.382 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:57.383 [Task submitter] INFO  nextflow.Session - [e3/037ad1] Submitted process > grompp (8)
+Nov-02 13:59:57.650 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: grompp (9); status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/3a/5a6cef0647821d9c65fedb6e6f8cf0]
+Nov-02 13:59:57.652 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:57.653 [Task submitter] INFO  nextflow.Session - [1a/f31587] Submitted process > grompp (6)
+Nov-02 13:59:57.926 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: grompp (5); status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/61/699df4eaa7f481de80645f52a0f8b1]
+Nov-02 13:59:57.930 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:57.930 [Task submitter] INFO  nextflow.Session - [4f/fd5812] Submitted process > grompp (11)
+Nov-02 13:59:58.012 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: grompp (4); status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/71/7a7a5ebcb1079e5fe143c6d51964f6]
+Nov-02 13:59:58.017 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:58.017 [Task submitter] INFO  nextflow.Session - [f9/4bf90d] Submitted process > grompp (13)
+Nov-02 13:59:58.105 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: grompp (1); status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/ba/ed49776e36bc8966cd20a14235b35e]
+Nov-02 13:59:58.108 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:58.108 [Task submitter] INFO  nextflow.Session - [89/734245] Submitted process > grompp (12)
+Nov-02 13:59:58.127 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: grompp (3); status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/19/c3a9669845798545ecf2d5b6740c56]
+Nov-02 13:59:58.131 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:58.131 [Task submitter] INFO  nextflow.Session - [76/824aaf] Submitted process > grompp (14)
+Nov-02 13:59:58.187 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: grompp (10); status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/4d/2469fdec889a2666a7e266be88c483]
+Nov-02 13:59:58.197 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:58.197 [Task submitter] INFO  nextflow.Session - [9b/48c5d5] Submitted process > grompp (15)
+Nov-02 13:59:58.450 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: grompp (7); status: COMPLETED; exit: 0; error: -; workDir: /home/boris/GMX-Nextflow/work/f0/189e44f5f6afaea5e11061177cf1d3]
+Nov-02 13:59:58.457 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Nov-02 13:59:58.460 [Task submitter] INFO  nextflow.Session - [c8/5dca13] Submitted process > mdrun
+Nov-02 14:00:05.051 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 17; name: mdrun; status: COMPLETED; exit: 1; error: -; workDir: /home/boris/GMX-Nextflow/work/c8/5dca135c56cdb49be2774b3ca909a3]
+Nov-02 14:00:05.074 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'mdrun'
+
+Caused by:
+  Process `mdrun` terminated with an error exit status (1)
+
+Command executed:
+
+  WORKDIR=/home/boris/GMX-Nextflow/RE
+  REPLICAS=`ls -d -- /home/boris/GMX-Nextflow/RE/*/`
+  NP=`ls -d -- /home/boris/GMX-Nextflow/RE/*/ | wc -l`
+  mpirun -np ${NP} gmx mdrun -v -deffnm angry_kalman             -cpo ${WORKDIR}/angry_kalman            -cpt 1 -pf ${WORKDIR}/angry_kalman_pf.xvg            -px ${WORKDIR}/angry_kalman_px.xvg            -plumed -multidir ${REPLICAS}            -replex 2000 -hrex -noappend -quiet
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command error:
+  Reading file angry_kalman.tpr, VERSION 2021-MODIFIED (single precision)
+  Reading file angry_kalman.tpr, VERSION 2021-MODIFIED (single precision)
+  Reading file angry_kalman.tpr, VERSION 2021-MODIFIED (single precision)
+  Reading file angry_kalman.tpr, VERSION 2021-MODIFIED (single precision)
+  
+  -------------------------------------------------------
+  Program:     gmx mdrun, version 2021-MODIFIED
+  Source file: src/gromacs/utility/futil.cpp (line 481)
+  MPI rank:    10 (out of 15)
+  
+  File input/output error:
+  angry_kalman.tpr
+  
+  -------------------------------------------------------
+  Program:     gmx mdrun, version 2021-MODIFIED
+  Source file: src/gromacs/utility/futil.cpp (line 481)
+  MPI rank:    11 (out of 15)
+  
+  File input/output error:
+  angry_kalman.tpr
+  
+  For more information and tips for troubleshooting, please check the GROMACS
+  website at http://www.gromacs.org/Documentation/Errors
+  -------------------------------------------------------
+  application called MPI_Abort(MPI_COMM_WORLD, 1) - process 11
+  
+  For more information and tips for troubleshooting, please check the GROMACS
+  website at http://www.gromacs.org/Documentation/Errors
+  -------------------------------------------------------
+  application called MPI_Abort(MPI_COMM_WORLD, 1) - process 10
+
+Work dir:
+  /home/boris/GMX-Nextflow/work/c8/5dca135c56cdb49be2774b3ca909a3
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+Nov-02 14:00:05.079 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `mdrun` terminated with an error exit status (1)
+Nov-02 14:00:05.104 [main] DEBUG nextflow.Session - Session await > all process finished
+Nov-02 14:00:05.105 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Nov-02 14:00:05.111 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (7)
+Nov-02 14:00:05.191 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=9; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=7; succeedDuration=1m 23s; failedDuration=6.5s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=8; peakCpus=8; peakMemory=0; ]
+Nov-02 14:00:05.337 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Nov-02 14:00:05.413 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

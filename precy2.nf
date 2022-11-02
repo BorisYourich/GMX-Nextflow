@@ -1,49 +1,93 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2
 
-# names of compulsory input files
-params.MDP="us.mdp" # simulation parameters
-params.GRO="??.gro" # structure file
+// precission of the calculation
+params.GMX="gmx"        // set to gmx_d for double precision
+params.RE="RE"     // Every subdir is considered a replica workdir
 
-# names of optional input files
-params.CPT="" # checkpoint file (e.g. from equilibration); leave empty if not needed
-params.REF="??.gro" # reference coordinates for restraints; leave empty if not needed
+// names of optional input files
+params.REF="" // reference coordinates for restraints; leave empty if not needed
 
-# names of renamed input files
-params.NDX="" # index file; leave empty string to set default (index.ndx)
-params.TOP="" # topology file; leave empty string to set default (topol.top)
+// runtime variables
+params.NTOMP="" // number of OpenMP threads per MPI rank; leave empty to set default
+params.MAXWARN="" // maximum number of warnings; leave empty to determine automatically (gen-vel)
 
-# runtime variables
-params.NTOMP="" # number of OpenMP threads per MPI rank; leave empty to set default
-params.MAXWARN="" # maximum number of warnings; leave empty to determine automatically (gen-vel)
+// plumed can be used only if the module version enables it
+params.PLUMED="plumed.dat" // name of the plumed script; leave empty if not used
+params.PLUMED_THREADS="" // number of plumed openMP threads; leave empty to set default 
 
-# plumed can be used only if the module version enables it
-params.PLUMED="plumed.dat" # name of the plumed script; leave empty if not used
-params.PLUMED_THREADS="" # number of plumed openMP threads; leave empty to set default
 
-process get_version {
+process get_replicas {
   
   output:
-  env GMX_VER
-
-  '''
-  GMX_VER=`conda --version | awk 'BEGIN {i = 0} tolower($0) ~ /gromacs version/ {split($NF, N, "."); if (N[1] > 6) i = 1} END {print i}'`
-  if [ ${GMX_VER} -eq 0 ]; then APPEND="-append"; fi
-  
-  '''
-}
-
-process print_version {
-  input:
-    val GMX_VER
-  output:
-    stdout
+  stdout
 
   """
-  echo $GMX_VER
+  ls -d -- ${workflow.launchDir}/${params.RE}/*/
+  """
+}
+
+process grompp {
+
+  input:
+  val replica
+
+  output:
+  stdout
+
+  """
+  MDP=`find ${replica} -name "*.mdp"`
+  GRO=`find ${replica} -name "*.gro"`
+  TOP=`find ${replica} -name "*.top"`
+  NDX=`find ${replica} -name "*.ndx"`
+  CPT=`find ${replica} -name "*.cpt"`
+  if [ ! -z \${CPT} ]; then CPT="-t \${CPT}"; fi
+  
+  if [ ! -z ${params.REF} ]; then
+      REF="${params.REF}"
+  else
+      REF="\${GRO}"
+  fi
+  
+  if [ -z ${params.MAXWARN} ]; then
+    GEN_VEL=`awk 'BEGIN {i = 0} /gen[-_]vel/ {if (toupper(\$3) == "YES") i = 1} END {print i}' \${MDP}`
+    if [ \${GEN_VEL} -eq 0 ]; then MAXWARN=0; else MAXWARN=1; fi
+  else
+    MAXWARN=${params.MAXWARN}
+  fi
+  
+  ${params.GMX} grompp -f \${MDP} \
+             -c \${GRO} \
+             -r \${REF} \${CPT} \
+             -p \${TOP} \
+             -n \${NDX} \
+             -o ${replica}${workflow.runName}.tpr -quiet -maxwarn \${MAXWARN}
+  """
+}
+
+process mdrun {
+
+  input:
+  val x
+  
+  output:
+  stdout
+  
+  """
+  WORKDIR=${workflow.launchDir}/${params.RE}
+  REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
+  NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
+  mpirun -np \${NP} gmx mdrun -v -deffnm ${workflow.runName} \
+            -cpo \${WORKDIR}/${workflow.runName}\
+            -cpt 1 -pf \${WORKDIR}/${workflow.runName}_pf.xvg\
+            -px \${WORKDIR}/${workflow.runName}_px.xvg\
+            -plumed ${params.PLUMED} -multidir \${REPLICAS}\
+            -replex 2000 -hrex -noappend -quiet
   """
 }
 
 workflow {
-  get_version | flatten | print_version | view { it.trim() }
+  Replicas = get_replicas().splitText().map{it -> it.trim()}
+  input = grompp(Replicas)
+  mdrun(input.min()) | view { it.trim() } // .min() is used for the mdrun to wait until all grompp jobs finnish
 }

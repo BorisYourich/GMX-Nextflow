@@ -1,0 +1,100 @@
+Unable to find image 'ljocha/gromacs:2021-2' locally
+2021-2: Pulling from ljocha/gromacs
+35807b77a593: Pulling fs layer
+1ad5f8a5dfc8: Pulling fs layer
+896d09e7c91f: Pulling fs layer
+3ecacd24229f: Pulling fs layer
+653a1d0c4ca9: Pulling fs layer
+3ecacd24229f: Waiting
+653a1d0c4ca9: Waiting
+56155c4fa9d8: Pulling fs layer
+bd7d4a363b9e: Pulling fs layer
+89122b95e7e5: Pulling fs layer
+bd7d4a363b9e: Waiting
+9b9d3b42582d: Pulling fs layer
+38ca219ed67d: Pulling fs layer
+9b9d3b42582d: Waiting
+2ead02661ab0: Pulling fs layer
+38ca219ed67d: Waiting
+50adfba86757: Pulling fs layer
+f2f34382fe8e: Pulling fs layer
+2ead02661ab0: Waiting
+ad7ff3df38e6: Pulling fs layer
+f2f34382fe8e: Waiting
+50adfba86757: Waiting
+78e4822d9e0e: Pulling fs layer
+52ed19324991: Pulling fs layer
+3686964b8ad3: Pulling fs layer
+a35cb47bfe7b: Pulling fs layer
+78e4822d9e0e: Waiting
+3686964b8ad3: Waiting
+ea625488f565: Pulling fs layer
+a35cb47bfe7b: Waiting
+f5a5accdbf5f: Pulling fs layer
+a550c4cdfe42: Pulling fs layer
+ea625488f565: Waiting
+f5a5accdbf5f: Waiting
+a550c4cdfe42: Waiting
+896d09e7c91f: Verifying Checksum
+896d09e7c91f: Download complete
+1ad5f8a5dfc8: Verifying Checksum
+1ad5f8a5dfc8: Download complete
+3ecacd24229f: Verifying Checksum
+3ecacd24229f: Download complete
+653a1d0c4ca9: Verifying Checksum
+653a1d0c4ca9: Download complete
+bd7d4a363b9e: Verifying Checksum
+bd7d4a363b9e: Download complete
+35807b77a593: Download complete
+35807b77a593: Pull complete
+1ad5f8a5dfc8: Pull complete
+896d09e7c91f: Pull complete
+3ecacd24229f: Pull complete
+653a1d0c4ca9: Pull complete
+89122b95e7e5: Verifying Checksum
+89122b95e7e5: Download complete
+38ca219ed67d: Verifying Checksum
+38ca219ed67d: Download complete
+2ead02661ab0: Download complete
+50adfba86757: Verifying Checksum
+50adfba86757: Download complete
+f2f34382fe8e: Verifying Checksum
+f2f34382fe8e: Download complete
+9b9d3b42582d: Verifying Checksum
+9b9d3b42582d: Download complete
+78e4822d9e0e: Verifying Checksum
+78e4822d9e0e: Download complete
+52ed19324991: Verifying Checksum
+52ed19324991: Download complete
+3686964b8ad3: Verifying Checksum
+3686964b8ad3: Download complete
+a35cb47bfe7b: Download complete
+ea625488f565: Verifying Checksum
+ea625488f565: Download complete
+f5a5accdbf5f: Verifying Checksum
+f5a5accdbf5f: Download complete
+a550c4cdfe42: Verifying Checksum
+a550c4cdfe42: Download complete
+ad7ff3df38e6: Verifying Checksum
+ad7ff3df38e6: Download complete
+56155c4fa9d8: Verifying Checksum
+56155c4fa9d8: Download complete
+56155c4fa9d8: Pull complete
+bd7d4a363b9e: Pull complete
+89122b95e7e5: Pull complete
+9b9d3b42582d: Pull complete
+38ca219ed67d: Pull complete
+2ead02661ab0: Pull complete
+50adfba86757: Pull complete
+f2f34382fe8e: Pull complete
+ad7ff3df38e6: Pull complete
+78e4822d9e0e: Pull complete
+52ed19324991: Pull complete
+3686964b8ad3: Pull complete
+a35cb47bfe7b: Pull complete
+ea625488f565: Pull complete
+f5a5accdbf5f: Pull complete
+a550c4cdfe42: Pull complete
+Digest: sha256:cf1c0bd2631bf67318fbf3431a0eaef6b10d3779c0c6b35e279c248f7c8b5d25
+Status: Downloaded newer image for ljocha/gromacs:2021-2
+/home/boris/GMX-Nextflow/work/2e/c486e2e9e08a5e28dc6a3af1bb59a5/.command.sh: line 2: !{projectDir}/gmx: No such file or directory

@@ -1,0 +1,13 @@
+Replacing old mdp entry 'nstxtcout' by 'nstxout-compressed'
+Setting the LD random seed to -1367609665
+
+NOTE 1 [file /home/boris/GMX-Nextflow/RE/06/us.mdp]:
+  nstcomm < nstcalcenergy defeats the purpose of nstcalcenergy, setting
+  nstcomm to nstcalcenergy
+
+
+Generated 100032 of the 100128 non-bonded parameter combinations
+Generating 1-4 interactions: fudge = 1
+
+Generated 65937 of the 100128 1-4 parameter combinations
+nxf-v0znR6FOO1S1LaMiDat5XhV7

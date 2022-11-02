@@ -1,0 +1,29 @@
+
+-------------------------------------------------------
+Program:     gmx grompp, version 2021-MODIFIED
+Source file: src/gromacs/commandline/cmdlineparser.cpp (line 275)
+Function:    void gmx::CommandLineParser::parse(int*, char**)
+
+Error in user input:
+Invalid command-line options
+  In command-line option -c
+    File '/home/boris/GMX-Nextflow/RE/05/01.gro' does not exist or is not
+    accessible.
+    The file could not be opened.
+      Reason: No such file or directory
+      (call to fopen() returned error code 2)
+  In command-line option -r
+    File '/home/boris/GMX-Nextflow/RE/05/01.gro' does not exist or is not
+    accessible.
+    The file could not be opened.
+      Reason: No such file or directory
+      (call to fopen() returned error code 2)
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+[unset]: write_line error; fd=-1 buf=:cmd=abort exitcode=1
+:
+system msg for write_line failure : Bad file descriptor
+Error response from daemon: Cannot kill container: nxf-29AczXPj5n1oUtXh80Yy36ns: Container a23c91637fcd08cde06410ae420abfd787556ee64996979477e03526049d934a is not running

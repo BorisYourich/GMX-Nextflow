@@ -841,7 +841,7 @@ Protein_chain_P     3
 #endif
 
 
-#include "dihre_peptide.itp"
+
 ; Include z restr
 #ifdef POSRE_PROT
 #include "posre_prot.itp"

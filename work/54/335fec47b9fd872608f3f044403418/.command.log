@@ -1,0 +1,3 @@
+awk: read error (Is a directory)
+/home/boris/GMX-Nextflow/work/54/335fec47b9fd872608f3f044403418/.command.sh: line 5: us.mdp: command not found
+Error response from daemon: Cannot kill container: nxf-KfG20AuAUxmpv38okeLhpUXm: Container c990fd56bb90d8537988fe36e767f81ae7ae5e4d4a777c25501998407055f684 is not running

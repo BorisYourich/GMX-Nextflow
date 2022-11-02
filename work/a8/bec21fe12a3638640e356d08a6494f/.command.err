@@ -1,0 +1,13 @@
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2021-MODIFIED
+Source file: src/gromacs/mdrunutility/multisim.cpp (line 75)
+Function:    std::unique_ptr<gmx_multisim_t> buildMultiSimulation(MPI_Comm, gmx::ArrayRef<const std::__cxx11::basic_string<char> >)
+
+Feature not implemented:
+To run mdrun in multi-simulation mode, more then one actual simulation is
+required. The single simulation case is not supported.
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------

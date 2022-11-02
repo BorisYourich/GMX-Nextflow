@@ -1,0 +1,8 @@
+#!/bin/bash -ue
+if [ -z  ]; then
+  GEN_VEL=`awk 'BEGIN {i = 0} /gen[-_]vel/ {if (toupper($3) == "YES") i = 1} END {print i}' us.mdp`
+  if [ ${GEN_VEL} -eq 0 ]; then MAXWARN=0; else MAXWARN=1; fi
+else
+  MAXWARN=
+fi
+gmx grompp -f us.mdp -c RE/01/01.gro -r RE/01/01.gro  -p RE/01/topol.top -n RE/01/index.ndx -o RE/01.tprol.top -quiet -maxwarn ${MAXWARN}

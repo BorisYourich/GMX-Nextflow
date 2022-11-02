@@ -1,0 +1,2 @@
+docker: Error response from daemon: invalid volume specification: '/home/boris/GMX-Nextflow:/home/boris/GMX-Nextflow:/home/boris/GMX-Nextflow:/home/boris/GMX-Nextflow:Z'.
+See 'docker run --help'.
