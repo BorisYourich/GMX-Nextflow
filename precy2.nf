@@ -67,7 +67,7 @@ process grompp {
 
 process mdrun {
 
-  cpus 15
+  cpus 8
 
   input:
   val x
