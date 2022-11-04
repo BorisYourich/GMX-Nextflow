@@ -79,10 +79,10 @@ process mdrun {
   
   """
   echo `nproc --all`
+  echo `free`
   WORKDIR=${workflow.launchDir}/${params.RE}
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
-  echo \${NP}
   mpirun -np \${NP} gmx mdrun -v -deffnm ${workflow.runName} \
             -cpo \${WORKDIR}/${workflow.runName}\
             -cpt 1 -pf \${WORKDIR}/${workflow.runName}_pf.xvg\
