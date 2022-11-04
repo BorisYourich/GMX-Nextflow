@@ -66,8 +66,8 @@ process grompp {
 }
 
 process mdrun {
-
   cpus 8
+  debug true
 
   input:
   val x
@@ -76,9 +76,11 @@ process mdrun {
   stdout
   
   """
+  echo `nproc --all`
   WORKDIR=${workflow.launchDir}/${params.RE}
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
+  echo \${NP}
   mpirun -np \${NP} gmx mdrun -v -deffnm ${workflow.runName} \
             -cpo \${WORKDIR}/${workflow.runName}\
             -cpt 1 -pf \${WORKDIR}/${workflow.runName}_pf.xvg\
