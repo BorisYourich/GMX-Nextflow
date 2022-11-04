@@ -28,7 +28,7 @@ process get_replicas {
 }
 
 process grompp {
-  memory '4 GB'
+  memory '2 GB'
 
   input:
   val replica
@@ -67,7 +67,7 @@ process grompp {
 }
 
 process mdrun {
-  memory '64 GB'
+  memory '40 GB'
   cpus 12
   debug true
 
