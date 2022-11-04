@@ -67,7 +67,7 @@ process grompp {
 }
 
 process mdrun {
-  memory '16 GB'
+  memory '8 GB'
   cpus 8
   debug true
 
