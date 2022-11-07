@@ -79,7 +79,7 @@ process mdrun {
   
   """
   echo `nproc --all`
-  echo `free`
+  echo `gmx --version`
   
   WORKDIR=${workflow.launchDir}/${params.RE}
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
