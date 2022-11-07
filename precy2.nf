@@ -93,8 +93,21 @@ process mdrun {
   """
 }
 
+process debug {
+  input:
+  val x
+  
+  output:
+  stdout
+  """
+  sleep infinity
+  """
+  
+}
+
 workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
   input = grompp(Replicas)
-  mdrun(input.min()) | view { it.trim() } // .min() is used for the mdrun to wait until all grompp jobs finnish
+  debug(input.min())
+  //mdrun(input.min()) | view { it.trim() } // .min() is used for the mdrun to wait until all grompp jobs finnish
 }
