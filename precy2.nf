@@ -94,6 +94,10 @@ process mdrun {
 }
 
 process debug {
+  memory '16 GB'
+  cpus 15
+  debug true
+  
   input:
   val x
   
