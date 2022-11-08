@@ -81,13 +81,12 @@ process mdrun {
   echo `nproc --all`
   echo `gmx --version`
   
-  WORKDIR=${workflow.launchDir}/${params.RE}
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
   mpirun -np \${NP} gmx mdrun -v -deffnm ${workflow.runName} \
-            -cpo \${WORKDIR}/${workflow.runName}\
-            -cpt 1 -pf \${WORKDIR}/${workflow.runName}_pf.xvg\
-            -px \${WORKDIR}/${workflow.runName}_px.xvg\
+            -cpo ${workflow.runName}\
+            -cpt 1 -pf ${workflow.runName}_pf.xvg\
+            -px ${workflow.runName}_px.xvg\
             -plumed ${params.PLUMED} -multidir \${REPLICAS}\
             -replex 2000 -hrex -noappend -quiet
   """
