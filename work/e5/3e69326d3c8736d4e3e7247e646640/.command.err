@@ -1,0 +1,23 @@
+Replacing old mdp entry 'nstxtcout' by 'nstxout-compressed'
+
+NOTE 1 [file /home/boris/GMX-Nextflow/RE/12/us.mdp]:
+  nstcomm < nstcalcenergy defeats the purpose of nstcalcenergy, consider
+  setting nstcomm equal to nstcalcenergy for less overhead
+
+Generating 1-4 interactions: fudge = 1
+
+NOTE 2 [file topol.top, line 876]:
+  You are combining position restraints with Parrinello-Rahman pressure
+  coupling, which can lead to instabilities. If you really want to combine
+  position restraints with pressure coupling, we suggest to use Berendsen
+  pressure coupling instead.
+
+Pull group 1 'POPC' has 53600 atoms
+Pull group 2 'Protein' has 89 atoms
+Number of degrees of freedom in T-Coupling group POPC_Protein is 128219.00
+Number of degrees of freedom in T-Coupling group Water_and_ions is 210939.00
+Pull group  natoms  pbc atom  distance at start  reference at t=0
+       1     53600     26800
+       2        89     53645      -2.228 nm         -2.230 nm
+
+There were 2 notes

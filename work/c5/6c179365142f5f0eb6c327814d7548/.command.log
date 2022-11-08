@@ -1,0 +1,301 @@
+8
+:-) GROMACS - gmx, 2021-plumed-2.7.2 (-: GROMACS is written by: Andrey Alekseenko Emile Apol Rossen Apostolov Paul Bauer Herman J.C. Berendsen Par Bjelkmar Christian Blau Viacheslav Bolnykh Kevin Boyd Aldert van Buuren Rudi van Drunen Anton Feenstra Gilles Gouaillardet Alan Gray Gerrit Groenhof Anca Hamuraru Vincent Hindriksen M. Eric Irrgang Aleksei Iupinov Christoph Junghans Joe Jordan Dimitrios Karkoulis Peter Kasson Jiri Kraus Carsten Kutzner Per Larsson Justin A. Lemkul Viveca Lindahl Magnus Lundborg Erik Marklund Pascal Merz Pieter Meulenhoff Teemu Murtola Szilard Pall Sander Pronk Roland Schulz Michael Shirts Alexey Shvetsov Alfons Sijbers Peter Tieleman Jon Vincent Teemu Virolainen Christian Wennberg Maarten Wolf Artem Zhmurov and the project leaders: Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel Copyright (c) 1991-2000, University of Groningen, The Netherlands. Copyright (c) 2001-2019, The GROMACS development team at Uppsala University, Stockholm University and the Royal Institute of Technology, Sweden. check out http://www.gromacs.org for more information. GROMACS is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version. GROMACS: gmx, version 2021-plumed-2.7.2 Executable: /gromacs/AVX2_256_ts/bin/gmx Data prefix: /gromacs/AVX2_256_ts Working dir: /home/boris/GMX-Nextflow/work/c5/6c179365142f5f0eb6c327814d7548 Command line: gmx --version GROMACS version: 2021-plumed-2.7.2 Precision: mixed Memory model: 64 bit MPI library: MPI OpenMP support: enabled (GMX_OPENMP_MAX_THREADS = 64) GPU support: CUDA SIMD instructions: AVX2_256 FFT library: fftw-3.3.8-sse2-avx-avx2-avx2_128 RDTSCP usage: enabled TNG support: enabled Hwloc support: disabled Tracing support: disabled C compiler: /usr/bin/gcc GNU 9.3.0 C compiler flags: -mavx2 -mfma -Wno-missing-field-initializers -fexcess-precision=fast -funroll-all-loops -O3 -DNDEBUG C++ compiler: /usr/bin/g++ GNU 9.3.0 C++ compiler flags: -mavx2 -mfma -Wno-missing-field-initializers -fexcess-precision=fast -funroll-all-loops -fopenmp -O3 -DNDEBUG CUDA compiler: /usr/local/cuda/bin/nvcc nvcc: NVIDIA (R) Cuda compiler driver;Copyright (c) 2005-2021 NVIDIA Corporation;Built on Sun_Feb_14_21:12:58_PST_2021;Cuda compilation tools, release 11.2, V11.2.152;Build cuda_11.2.r11.2/compiler.29618528_0 CUDA compiler flags:-std=c++17;-gencode;arch=compute_35,code=sm_35;-gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_52,code=sm_52;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_61,code=sm_61;-gencode;arch=compute_70,code=sm_70;-Wno-deprecated-gpu-targets;-gencode;arch=compute_35,code=compute_35;-gencode;arch=compute_50,code=compute_50;-gencode;arch=compute_52,code=compute_52;-gencode;arch=compute_60,code=compute_60;-gencode;arch=compute_61,code=compute_61;-gencode;arch=compute_70,code=compute_70;-gencode;arch=compute_75,code=compute_75;-gencode;arch=compute_80,code=compute_80;-use_fast_math;-D_FORCE_INLINES;-mavx2 -mfma -Wno-missing-field-initializers -fexcess-precision=fast -funroll-all-loops -fopenmp -O3 -DNDEBUG CUDA driver: 0.0 CUDA runtime: N/A
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Reading file tender_thompson.tpr, VERSION 2021-plumed-2.7.2 (single precision)
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.326
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.326
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.326
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.326
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.326
+
+Changing nstlist from 20 to 100, rlist from 1.21 to 1.325
+
+This is simulation 0 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 2 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 4 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 6 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 8 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 10 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 5 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 1 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+This is simulation 9 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+
+Using 1 MPI process
+This is simulation 11 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 12 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 3 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 14 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 7 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+This is simulation 13 out of 15 running as a composite GROMACS
+multi-simulation job. Setup for this simulation:
+
+Using 1 MPI process
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+
+
+Using 1 OpenMP thread Using 1 OpenMP thread 
+
+
+
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+Using 1 OpenMP thread 
+
+
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+WARNING: On rank 0: oversubscribing the available 8 logical CPU cores per node with 15 MPI processes.
+         This will cause considerable performance loss.
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+
+NOTE: Oversubscribing the CPU, will not pin threads
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+
+NOTE: Oversubscribing the CPU, will not pin threads
+NOTE: Oversubscribing the CPU, will not pin threads
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.1#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.1#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.2#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.2#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.4#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.4#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.3#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.3#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.5#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.5#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.6#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.6#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.7#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.7#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.8#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.8#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.9#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.9#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.9#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.10#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.10#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.11#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.11#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.12#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.12#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.13#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_px.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_px.part0001.xvg.13#
+
+Back Off! I just backed up /home/boris/GMX-Nextflow/RE/tender_thompson_pf.part0001.xvg to /home/boris/GMX-Nextflow/RE/#tender_thompson_pf.part0001.xvg.14#
+starting mdrun 'Protein in water'
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+starting mdrun 'Protein in water'
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+starting mdrun 'Protein in water'
+starting mdrun 'Protein in water'
+7000000 steps,  14000.0 ps.
+7000000 steps,  14000.0 ps.
+step 0.command.run: line 71: 51731 Hangup                  tee .command.err < $cerr 1>&2
+.command.run: line 71: 51732 Hangup                  ( nxf_launch ) > $cout 2> $cerr
+Terminated

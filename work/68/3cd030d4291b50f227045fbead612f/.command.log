@@ -1,0 +1,72 @@
+8
+:-) GROMACS - gmx_mpi, 2022.2 (-: Executable: /gromacs/bin.AVX2_256/gmx_mpi Data prefix: /gromacs Working dir: /home/boris/GMX-Nextflow/work/68/3cd030d4291b50f227045fbead612f Command line: gmx_mpi --version GROMACS version: 2022.2 Precision: mixed Memory model: 64 bit MPI library: MPI (CUDA-aware) OpenMP support: enabled (GMX_OPENMP_MAX_THREADS = 128) GPU support: CUDA SIMD instructions: AVX2_256 CPU FFT library: fftw-3.3.8-sse2-avx-avx2-avx2_128 GPU FFT library: cuFFT RDTSCP usage: disabled TNG support: enabled Hwloc support: disabled Tracing support: disabled C compiler: /usr/local/openmpi/bin/mpicc GNU 8.4.0 C compiler flags: -mavx2 -mfma -Wno-missing-field-initializers -fexcess-precision=fast -funroll-all-loops -O3 -DNDEBUG C++ compiler: /usr/local/openmpi/bin/mpicxx GNU 8.4.0 C++ compiler flags: -mavx2 -mfma -Wno-missing-field-initializers -fexcess-precision=fast -funroll-all-loops -fopenmp -O3 -DNDEBUG CUDA compiler: /usr/local/cuda/bin/nvcc nvcc: NVIDIA (R) Cuda compiler driver;Copyright (c) 2005-2022 NVIDIA Corporation;Built on Tue_Mar__8_18:18:20_PST_2022;Cuda compilation tools, release 11.6, V11.6.124;Build cuda_11.6.r11.6/compiler.31057947_0 CUDA compiler flags:-std=c++17;;-D_FORCE_INLINES;-mavx2 -mfma -Wno-missing-field-initializers -fexcess-precision=fast -funroll-all-loops -fopenmp -O3 -DNDEBUG CUDA driver: 11.60 CUDA runtime: N/A
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2022.2
+Source file: src/gromacs/commandline/cmdlineparser.cpp (line 271)
+Function:    void gmx::CommandLineParser::parse(int*, char**)
+MPI rank:    1 (out of 4)
+
+Error in user input:
+Invalid command-line options
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2022.2
+Source file: src/gromacs/commandline/cmdlineparser.cpp (line 271)
+Function:    void gmx::CommandLineParser::parse(int*, char**)
+MPI rank:    2 (out of 4)
+
+Error in user input:
+Invalid command-line options
+    Unknown command-line option -plumed
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2022.2
+Source file: src/gromacs/commandline/cmdlineparser.cpp (line 271)
+Function:    void gmx::CommandLineParser::parse(int*, char**)
+MPI rank:    3 (out of 4)
+
+Error in user input:
+Invalid command-line options
+    Unknown command-line option -plumed
+
+-------------------------------------------------------
+Program:     gmx mdrun, version 2022.2
+Source file: src/gromacs/commandline/cmdlineparser.cpp (line 271)
+Function:    void gmx::CommandLineParser::parse(int*, char**)
+MPI rank:    0 (out of 4)
+
+Error in user input:
+Invalid command-line options
+    Unknown command-line option -plumed
+    Unknown command-line option -hrex
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors    Unknown command-line option -hrex
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+    Unknown command-line option -plumed
+    Unknown command-line option -hrex
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+    Unknown command-line option -hrex
+
+For more information and tips for troubleshooting, please check the GROMACS
+website at http://www.gromacs.org/Documentation/Errors
+-------------------------------------------------------
+
+-------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+[1ebf4e1092e6:00029] 3 more processes have sent help message help-mpi-api.txt / mpi-abort
+[1ebf4e1092e6:00029] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
