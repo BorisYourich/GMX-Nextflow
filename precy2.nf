@@ -70,6 +70,7 @@ process mdrun {
   memory '16 GB'
   cpus 15
   debug true
+  scratch true
 
   input:
   val x
