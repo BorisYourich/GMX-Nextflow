@@ -1,7 +1,7 @@
 define			= -DPOSRES_XY
 integrator              = md
 dt                      = 0.002
-nsteps                  = 7000000
+nsteps                  = 7000
 nstxtcout               = 50000
 nstvout                 = 50000
 nstfout                 = 50000
