@@ -35,7 +35,7 @@ process grompp {
   val replica
 
   output:
-  env CPT_F
+  stdout
 
   """
   MDP=`find ${replica} -name "*.mdp"`
@@ -44,15 +44,12 @@ process grompp {
   NDX=`find ${replica} -name "*.ndx"`
   
   if [ ! -z ${params.PREV} ]; then
-      CPT_F=`find ${replica}${params.PREV} -name "${params.PREV}.cpt"`
-      CPT="-t "\${CPT_F}
-      CPT_F=`basename \${CPT_F}`
+      CPT="-t "`find ${replica}/${params.PREV} -name "${params.PREV}.cpt"`
   else
       CPT=""
-      CPT_F=""
   fi
   
-  echo \${CPT_F}
+  echo \${CPT}
   
   if [ ! -z ${params.REF} ]; then
       REF="${params.REF}"
@@ -84,16 +81,20 @@ process mdrun {
   scratch true
 
   input:
-  val CPT
+  val x
   
   output:
   env REPLICAS
   
   """
-  if [ ! -z ${CPT} ]; then
-      CPI="-cpi "${params.PREV}"/"${CPT}
-      echo \${CPI}
+  if [ ! -z ${params.PREV} ]; then
+      CPI="-cpi "${params.PREV}"/"${params.PREV}".cpt"
+  else
+      CPI=""
   fi
+  
+  echo \${CPI}
+  
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
   mpirun -np \${NP} gmx mdrun -v -deffnm ${workflow.runName} \
