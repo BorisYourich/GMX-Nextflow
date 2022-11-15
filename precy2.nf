@@ -44,7 +44,8 @@ process grompp {
   NDX=`find ${replica} -name "*.ndx"`
   
   if [ ! -z ${params.PREV} ]; then
-      CPT="-t "`find ${replica} -name "*${params.PREV}.cpt"`
+      CPT="-t "
+      CPT+=`find ${replica} -name "*${params.PREV}.cpt"`
   fi
   
   echo \${CPT}
