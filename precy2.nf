@@ -44,8 +44,7 @@ process grompp {
   NDX=`find ${replica} -name "*.ndx"`
   
   if [ ! -z ${params.PREV} ]; then
-      CPT="-t "
-      CPT+=`find ${replica} -name "*${params.PREV}.cpt"`
+      CPT="-t "+`find ${replica} -name "${params.PREV}.cpt"`
   fi
   
   echo \${CPT}
@@ -65,7 +64,8 @@ process grompp {
   
   ${params.GMX} grompp -f \${MDP} \
              -c \${GRO} \
-             -r \${REF} \${CPT} \
+             -r \${REF} \
+             \${CPT} \
              -p \${TOP} \
              -n \${NDX} \
              -o ${replica}${workflow.runName}.tpr -quiet -maxwarn \${MAXWARN}
