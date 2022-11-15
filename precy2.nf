@@ -133,6 +133,6 @@ workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
   input = grompp(Replicas)
   Replicas = mdrun(input.min()).splitCsv(sep:" ") // .min() is used for the mdrun to wait until all grompp jobs finnish
-  ch = Channel.fromList(Replicas)
+  ch = Channel.of(Replicas)
   archive(ch) | view { it.trim() } 
 }
