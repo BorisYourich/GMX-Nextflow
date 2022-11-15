@@ -7,6 +7,7 @@ params.RE="RE"     // Every subdir is considered a replica workdir
 
 // names of optional input files
 params.REF="" // reference coordinates for restraints; leave empty if not needed
+params.PREV="" // mnemonic name of the previous workflow from which to use a .cpt file
 
 // runtime variables
 params.NTOMP="" // number of OpenMP threads per MPI rank; leave empty to set default
@@ -41,8 +42,10 @@ process grompp {
   GRO=`find ${replica} -name "*.gro"`
   TOP=`find ${replica} -name "*.top"`
   NDX=`find ${replica} -name "*.ndx"`
-  CPT=`find ${replica} -name "*.cpt"`
-  if [ ! -z \${CPT} ]; then CPT="-t \${CPT}"; fi
+  
+  if [ ! -z ${params.PREV} ]; then
+      CPT="-t "`find ${replica} -name "*${params.PREV}.cpt"`
+  fi
   
   echo \${CPT}
   
