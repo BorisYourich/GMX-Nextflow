@@ -1,0 +1,67 @@
+Unable to find image 'ljocha/gromacs:2021-3.3' locally
+2021-3.3: Pulling from ljocha/gromacs
+5d3b2c2d21bb: Pulling fs layer
+3fc2062ea667: Pulling fs layer
+75adf526d75b: Pulling fs layer
+23f139402a84: Pulling fs layer
+727f7eed3206: Pulling fs layer
+085eb61183a5: Pulling fs layer
+f75f4c25808e: Pulling fs layer
+47da3b009c89: Pulling fs layer
+40715b1769a5: Pulling fs layer
+f20127c48ab5: Pulling fs layer
+d721da04a26e: Pulling fs layer
+b40c6b84d1a7: Pulling fs layer
+23f139402a84: Waiting
+bc88e9030e9e: Pulling fs layer
+727f7eed3206: Waiting
+0da0f2b41caa: Pulling fs layer
+ed315e9f4fac: Pulling fs layer
+9845090ea5e5: Pulling fs layer
+085eb61183a5: Waiting
+dfeac69da1bb: Pulling fs layer
+f75f4c25808e: Waiting
+190302745600: Pulling fs layer
+d354dc10a010: Pulling fs layer
+47da3b009c89: Waiting
+16353da37b28: Pulling fs layer
+f20127c48ab5: Waiting
+40715b1769a5: Waiting
+457fe8ed737b: Pulling fs layer
+d721da04a26e: Waiting
+ed315e9f4fac: Waiting
+01ad77dde1fe: Pulling fs layer
+190302745600: Waiting
+d354dc10a010: Waiting
+16353da37b28: Waiting
+b40c6b84d1a7: Waiting
+457fe8ed737b: Waiting
+0da0f2b41caa: Waiting
+dfeac69da1bb: Waiting
+75adf526d75b: Verifying Checksum
+75adf526d75b: Download complete
+3fc2062ea667: Verifying Checksum
+3fc2062ea667: Download complete
+727f7eed3206: Verifying Checksum
+727f7eed3206: Download complete
+23f139402a84: Verifying Checksum
+23f139402a84: Download complete
+085eb61183a5: Download complete
+47da3b009c89: Verifying Checksum
+47da3b009c89: Download complete
+5d3b2c2d21bb: Download complete
+5d3b2c2d21bb: Pull complete
+3fc2062ea667: Pull complete
+75adf526d75b: Pull complete
+23f139402a84: Pull complete
+727f7eed3206: Pull complete
+085eb61183a5: Pull complete
+f20127c48ab5: Verifying Checksum
+f20127c48ab5: Download complete
+40715b1769a5: Verifying Checksum
+40715b1769a5: Download complete
+b40c6b84d1a7: Download complete
+bc88e9030e9e: Verifying Checksum
+bc88e9030e9e: Download complete
+0da0f2b41caa: Verifying Checksum
+0da0f2b41caa: Download complete

@@ -132,6 +132,6 @@ process archive {
 workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
   input = grompp(Replicas)	// .min() is used for the mdrun to wait until all grompp jobs finnish
-  Replicas = mdrun(input.min()).splitText().map{it -> it.trim()} 
+  Replicas = mdrun(input.min()).splitCsv(sep:" ").map{it -> it.trim()} 
   archive(Replicas) | view { it.trim() } 
 }
