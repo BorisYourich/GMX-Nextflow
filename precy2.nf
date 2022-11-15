@@ -2,20 +2,20 @@
 nextflow.enable.dsl=2
 
 // precission of the calculation
-params.GMX="gmx"        // set to gmx_d for double precision
-params.RE="RE"     // Every subdir is considered a replica workdir
+params.GMX="gmx"	// set to gmx_d for double precision
+params.RE="RE"		// every subdir is considered a replica workdir
+params.PREV=""	// mnemonic name of the previous workflow from which to use a .cpt file
 
 // names of optional input files
-params.REF="" // reference coordinates for restraints; leave empty if not needed
-params.PREV="" // mnemonic name of the previous workflow from which to use a .cpt file
+params.REF=""	// reference coordinates for restraints; leave empty if not needed
 
 // runtime variables
-params.NTOMP="" // number of OpenMP threads per MPI rank; leave empty to set default
-params.MAXWARN="" // maximum number of warnings; leave empty to determine automatically (gen-vel)
+params.NTOMP=""		// number of OpenMP threads per MPI rank; leave empty to set default
+params.MAXWARN=""	// maximum number of warnings; leave empty to determine automatically (gen-vel)
 
 // plumed can be used only if the module version enables it
-params.PLUMED="plumed.dat" // name of the plumed script; leave empty if not used
-params.PLUMED_THREADS="" // number of plumed openMP threads; leave empty to set default 
+params.PLUMED="plumed.dat"	// name of the plumed script; leave empty if not used
+params.PLUMED_THREADS=""	// number of plumed openMP threads; leave empty to set default 
 
 
 process get_replicas {
@@ -44,10 +44,9 @@ process grompp {
   NDX=`find ${replica} -name "*.ndx"`
   
   if [ ! -z ${params.PREV} ]; then
-      CPT="-t "`find ${replica} -name "${params.PREV}.cpt"`
+      CPT="-t "`find ${replica}/${params.PREV} -name "${params.PREV}.cpt"`
+      echo \${CPT}
   fi
-  
-  echo \${CPT}
   
   if [ ! -z ${params.REF} ]; then
       REF="${params.REF}"
@@ -69,6 +68,9 @@ process grompp {
              -p \${TOP} \
              -n \${NDX} \
              -o ${replica}${workflow.runName}.tpr -quiet -maxwarn \${MAXWARN}
+  
+  mkdir ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}.tpr ${replica}${workflow.runName}
   """
 }
 
