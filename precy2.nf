@@ -44,6 +44,8 @@ process grompp {
   CPT=`find ${replica} -name "*.cpt"`
   if [ ! -z \${CPT} ]; then CPT="-t \${CPT}"; fi
   
+  echo \${CPT}
+  
   if [ ! -z ${params.REF} ]; then
       REF="${params.REF}"
   else
