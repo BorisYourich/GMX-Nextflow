@@ -35,7 +35,7 @@ process grompp {
   val replica
 
   output:
-  stdout
+  env CPT_F
 
   """
   MDP=`find ${replica} -name "*.mdp"`
@@ -44,9 +44,15 @@ process grompp {
   NDX=`find ${replica} -name "*.ndx"`
   
   if [ ! -z ${params.PREV} ]; then
-      CPT="-t "`find ${replica}/${params.PREV} -name "${params.PREV}.cpt"`
-      echo \${CPT}
+      CPT_F=`find ${replica}${params.PREV} -name "${params.PREV}.cpt"`
+      CPT="-t "\${CPT_F}
+      CPT_F=`basename \${CPT_F}`
+  else
+      CPT=""
+      CPT_F=""
   fi
+  
+  echo \${CPT_F}
   
   if [ ! -z ${params.REF} ]; then
       REF="${params.REF}"
@@ -68,9 +74,6 @@ process grompp {
              -p \${TOP} \
              -n \${NDX} \
              -o ${replica}${workflow.runName}.tpr -quiet -maxwarn \${MAXWARN}
-  
-  mkdir ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}.tpr ${replica}${workflow.runName}
   """
 }
 
@@ -81,18 +84,20 @@ process mdrun {
   scratch true
 
   input:
-  val x
+  val CPT
   
   output:
-  stdout
+  env REPLICAS
   
   """
-  echo `nproc --all`
-  echo `gmx --version`
-  
+  if [ ! -z ${CPT} ]; then
+      CPI="-cpi "${params.PREV}"/"${CPT}
+      echo \${CPI}
+  fi
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
   mpirun -np \${NP} gmx mdrun -v -deffnm ${workflow.runName} \
+            \${CPI} \
             -cpo ${workflow.runName}\
             -cpt 1 -pf ${workflow.runName}_pf.xvg\
             -px ${workflow.runName}_px.xvg\
@@ -101,8 +106,31 @@ process mdrun {
   """
 }
 
+process archive {
+
+  input:
+  val replica
+
+  output:
+  stdout
+  
+  """
+  mkdir ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.xvg   ${replica}${workflow.runName}
+  """
+}
+
+
 workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
-  input = grompp(Replicas)
-  mdrun(input.min()) | view { it.trim() } // .min() is used for the mdrun to wait until all grompp jobs finnish
+  input = grompp(Replicas)	// .min() is used for the mdrun to wait until all grompp jobs finnish
+  Replicas = mdrun(input.min()).splitText().map{it -> it.trim()} 
+  archive(Replicas) | view { it.trim() } 
 }
