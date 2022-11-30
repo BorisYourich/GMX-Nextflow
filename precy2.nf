@@ -75,11 +75,11 @@ process grompp {
 }
 
 process mdrun {
-  memory '16 GB'
-  cpus 15
+  // memory '16 GB'
+  // cpus 15
   debug true
   scratch true
-
+  
   input:
   val x
   
@@ -97,13 +97,13 @@ process mdrun {
   
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
-  mpirun -np \${NP} gmx mdrun -v -deffnm ${workflow.runName} \
-            \${CPI} \
-            -cpo ${workflow.runName}\
-            -cpt 1 -pf ${workflow.runName}_pf.xvg\
-            -px ${workflow.runName}_px.xvg\
-            -plumed ${params.PLUMED} -multidir \${REPLICAS}\
-            -replex 2000 -hrex -noappend -quiet
+  mpirun -iface eth0 -hosts \$(cat /etc/mpi/hostfile | paste -sd "," -) \
+         -np \${NP} gmx mdrun -v -deffnm ${workflow.runName} \
+         -cpo ${workflow.runName} \${CPI} \
+         -cpt 1 -pf ${workflow.runName}_pf.xvg \
+         -px ${workflow.runName}_px.xvg \
+         -plumed ${params.PLUMED} -multidir \${REPLICAS} \
+         -replex 2000 -hrex -noappend -quiet
   """
 }
 
@@ -111,6 +111,7 @@ process archive {
 
   input:
   val replica
+  each dummy
 
   output:
   stdout
@@ -132,6 +133,6 @@ process archive {
 workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
   input = grompp(Replicas)
-  Reps = mdrun(input.min()).splitCsv(sep:" ") // .min() is used for the mdrun to wait until all grompp jobs finnish
-  Channel.of(Reps) | archive() | view { it.trim() } 
+  Dummy = mdrun(input.min()).splitCsv(sep:" ") // .min() is used for the mdrun to wait until all grompp jobs finnish .splitCsv(sep:" ")
+  archive(Replicas, Dummy) | view { it.trim() } 
 }
