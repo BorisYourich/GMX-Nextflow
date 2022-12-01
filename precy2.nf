@@ -31,7 +31,8 @@ process get_replicas {
 process grompp_params {
 
   output:
-  tuple env MDP, env GRO, env TOP, env NDX, env CPT, env REF, env MAXWARN
+  tuple env('MDP'), env(GRO), env(TOP), env(NDX), env(CPT), env(REF), env(MAXWARN)
+  
   """
   MDP=`find ${replica} -name "*.mdp"`
   GRO=`find ${replica} -name "*.gro"`
@@ -66,11 +67,12 @@ process grompp {
 
   input:
   val replica
-  tuple each MDP, each GRO, each TOP, each NDX, each CPT, each REF, each MAXWARN
+  tuple each(MDP), each(GRO), each(TOP), each(NDX), each(CPT), each(REF), each(MAXWARN)
 
   output:
   stdout
 
+  script:
   if (params.CPT == "")
     """
     ${params.GMX} grompp -f ${MDP} \
@@ -80,6 +82,7 @@ process grompp {
                -n ${NDX} \
                -o ${replica}${workflow.runName}.tpr -quiet -maxwarn ${MAXWARN}
     """
+    
   else
     """
     ${params.GMX} grompp -f ${MDP} \
@@ -150,7 +153,8 @@ process archive {
 
 workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
-  input = grompp(Replicas, grompp_params())
+  Grompp_params = Channel.of(grompp_params())
+  input = grompp(Replicas, Grompp_params)
   Dummy = mdrun(input.min()).splitCsv(sep:" ")  // .min() is used for the mdrun to wait until all grompp jobs finnish
   archive(Replicas, Dummy) | view { it.trim() } // Dummy is used for archive to wait until mdrun is finnished
 }
