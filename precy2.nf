@@ -28,15 +28,9 @@ process get_replicas {
   """
 }
 
-process grompp {
-  memory '2 GB'
-
-  input:
-  val replica
-
+process grompp_params {
   output:
-  stdout
-
+  tuple env MDP, env GRO, env TOP, env NDX, env CPT, env REF, env MAXWARN
   """
   MDP=`find ${replica} -name "*.mdp"`
   GRO=`find ${replica} -name "*.gro"`
@@ -63,15 +57,38 @@ process grompp {
   else
     MAXWARN=${params.MAXWARN}
   fi
-  
-  ${params.GMX} grompp -f \${MDP} \
-             -c \${GRO} \
-             -r \${REF} \
-             -t \${CPT} \
-             -p \${TOP} \
-             -n \${NDX} \
-             -o ${replica}${workflow.runName}.tpr -quiet -maxwarn \${MAXWARN}
   """
+}
+
+process grompp {
+  memory '2 GB'
+
+  input:
+  val replica
+  tuple each MDP, each GRO, each TOP, each NDX, each CPT, each REF, each MAXWARN
+
+  output:
+  stdout
+
+  if (params.CPT == "")
+    """
+    ${params.GMX} grompp -f ${MDP} \
+               -c ${GRO} \
+               -r ${REF} \
+               -p ${TOP} \
+               -n ${NDX} \
+               -o ${replica}${workflow.runName}.tpr -quiet -maxwarn ${MAXWARN}
+    """
+  else
+    """
+    ${params.GMX} grompp -f ${MDP} \
+               -c ${GRO} \
+               -r ${REF} \
+               -t ${CPT} \
+               -p ${TOP} \
+               -n ${NDX} \
+               -o ${replica}${workflow.runName}.tpr -quiet -maxwarn ${MAXWARN}
+    """
 }
 
 process mdrun {
@@ -132,7 +149,7 @@ process archive {
 
 workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
-  input = grompp(Replicas)
+  input = grompp(Replicas, grompp_params())
   Dummy = mdrun(input.min()).splitCsv(sep:" ") // .min() is used for the mdrun to wait until all grompp jobs finnish .splitCsv(sep:" ")
   archive(Replicas, Dummy) | view { it.trim() } 
 }
