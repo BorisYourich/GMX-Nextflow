@@ -44,7 +44,7 @@ process grompp_params {
   if [ ! -z ${params.PREV} ]; then
       CPT=`find ${replica}${params.PREV} -name "${params.PREV}.cpt"`
   else
-      CPT=""
+      CPT="None"
   fi
   
   echo \${CPT}
@@ -75,7 +75,7 @@ process grompp {
   stdout
 
   script:
-  if (params.CPT == "")
+  if (params.CPT == "None")
     """
     ${params.GMX} grompp -f ${MDP} \
                -c ${GRO} \
