@@ -126,7 +126,7 @@ process mdrun {
          -cpt 15 -pf ${workflow.runName}_pf.xvg \
          -px ${workflow.runName}_px.xvg \
          -plumed ${params.PLUMED} -multidir \${REPLICAS} \
-         -replex 2000 -hrex -noappend -quiet
+         -c ${workflow.runName}.gro -replex 2000 -hrex -noappend -quiet
   """
 }
 
