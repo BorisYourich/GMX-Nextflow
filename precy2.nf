@@ -3,7 +3,7 @@ nextflow.enable.dsl=2
 
 // precission of the calculation
 params.GMX="gmx"	// set to gmx_d for double precision
-params.RE="RE"		// every subdir is considered a replica workdir
+params.RE="RE"		// directory name, every subdir is considered a replica workdir
 params.PREV=""	// mnemonic name of the previous workflow from which to use a .cpt file
 
 // names of optional input files
@@ -31,7 +31,7 @@ process get_replicas {
 process grompp_params {
 
   output:
-  tuple env('MDP'), env(GRO), env(TOP), env(NDX), env(CPT), env(REF), env(MAXWARN)
+  tuple env(MDP), env(GRO), env(TOP), env(NDX), env(CPT), env(REF), env(MAXWARN)
   
   """
   MDP=`find ${replica} -name "*.mdp"`
