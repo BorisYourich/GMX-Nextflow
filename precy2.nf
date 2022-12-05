@@ -67,7 +67,7 @@ process grompp {
 
   input:
   val replica
-  tuple (val(MDP), each(GRO), each(TOP), each(NDX), each(CPT), each(REF), each(MAXWARN))
+  tuple (val(MDP), val(GRO), val(TOP), val(NDX), val(CPT), val(REF), val(MAXWARN))
 
   output:
   stdout
