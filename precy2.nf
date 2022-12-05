@@ -148,8 +148,8 @@ process archive {
   mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}/${workflow.runName}.cpt
   mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}/${workflow.runName}.xtc
   mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}/${workflow.runName}.trr
-  mv ${replica}${workflow.runName}*_pf.xvg   ${replica}${workflow.runName}/${workflow.runName}_pf.xvg
-  mv ${replica}${workflow.runName}*_px.xvg   ${replica}${workflow.runName}/${workflow.runName}_px.xvg
+  mv ${replica}${workflow.runName}_pf*.xvg   ${replica}${workflow.runName}/${workflow.runName}_pf.xvg
+  mv ${replica}${workflow.runName}_px*.xvg   ${replica}${workflow.runName}/${workflow.runName}_px.xvg
   """
 }
 
