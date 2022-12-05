@@ -36,13 +36,13 @@ process grompp_params {
   tuple env(MDP), env(GRO), env(TOP), env(NDX), env(CPT), env(REF), env(MAXWARN)
   
   """
-  MDP=`find ${replica} -name "*.mdp"`
-  GRO=`find ${replica} -name "*.gro"`
-  TOP=`find ${replica} -name "*.top"`
-  NDX=`find ${replica} -name "*.ndx"`
+  MDP=`find ${replica} -maxdepth 1 -name "*.mdp"`
+  GRO=`find ${replica} -maxdepth 1 -name "*.gro"`
+  TOP=`find ${replica} -maxdepth 1 -name "*.top"`
+  NDX=`find ${replica} -maxdepth 1 -name "*.ndx"`
   
   if [ ! -z ${params.PREV} ]; then
-      CPT=`find ${replica}${params.PREV} -name "${params.PREV}.cpt"`
+      CPT=`find ${replica}${params.PREV} -maxdepth 1 -name "${params.PREV}.cpt"`
   else
       CPT="None"
   fi
@@ -75,7 +75,7 @@ process grompp {
   stdout
 
   script:
-  if (params.CPT == "None")
+  if (CPT == "None")
     """
     ${params.GMX} grompp -f ${MDP} \
                -c ${GRO} \
@@ -155,8 +155,8 @@ process archive {
 
 workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
-  //Grompp_params = Channel.of(grompp_params())
-  input = grompp(Replicas, grompp_params(Replicas))
+  Grompp_params = Channel.of(grompp_params())
+  input = grompp(Replicas, Grompp_params)
   Dummy = mdrun(input.min()).splitCsv(sep:" ")  // .min() is used for the mdrun to wait until all grompp jobs finnish
   archive(Replicas, Dummy) | view { it.trim() } // Dummy is used for archive to wait until mdrun is finnished
 }
