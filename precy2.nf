@@ -126,7 +126,6 @@ process mdrun {
          -cpt 15 -pf ${workflow.runName}_pf.xvg \
          -px ${workflow.runName}_px.xvg \
          -plumed ${params.PLUMED} -multidir \${REPLICAS} \
-         -c ${workflow.runName}.gro
          -replex 2000 -hrex -noappend -quiet
   """
 }
@@ -140,31 +139,17 @@ process archive {
   output:
   stdout
   
-  script:
-  if (params.PREV == "")
-    """
-    mkdir ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.xvg   ${replica}${workflow.runName}
-    """
-   else
-    """
-    mkdir ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.xvg   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}
-    mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}
-    """
+  """
+  mkdir ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}*.xvg   ${replica}${workflow.runName}
+  """
 }
 
 
