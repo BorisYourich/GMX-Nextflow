@@ -122,10 +122,11 @@ process mdrun {
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
   mpirun -iface eth0 -hosts \$(cat /etc/mpi/hostfile | paste -sd "," -) \
          -np \${NP} gmx mdrun -ntomp 32 -v -deffnm ${workflow.runName} \
-         -cpo ${workflow.runName} \${CPI} \
-         -cpt 1 -pf ${workflow.runName}_pf.xvg \
+         -cpo ${workflow.runName}.cpt \${CPI} \
+         -cpt 15 -pf ${workflow.runName}_pf.xvg \
          -px ${workflow.runName}_px.xvg \
          -plumed ${params.PLUMED} -multidir \${REPLICAS} \
+         -c ${workflow.runName}.gro
          -replex 2000 -hrex -noappend -quiet
   """
 }
@@ -139,23 +140,36 @@ process archive {
   output:
   stdout
   
-  """
-  mkdir ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.xvg   ${replica}${workflow.runName}
-  """
+  script:
+  if (params.PREV == "")
+    """
+    mkdir ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.xvg   ${replica}${workflow.runName}
+    """
+   else
+    """
+    mkdir ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.xvg   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}
+    mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}
+    """
 }
 
 
 workflow {
   Replicas = get_replicas().splitText().map{it -> it.trim()}
-  //Grompp_params = Channel.of(grompp_params(Replicas))
   input = grompp(Replicas, grompp_params(Replicas))
   Dummy = mdrun(input.min()).splitCsv(sep:" ")  // .min() is used for the mdrun to wait until all grompp jobs finnish
   archive(Replicas, Dummy) | view { it.trim() } // Dummy is used for archive to wait until mdrun is finnished
