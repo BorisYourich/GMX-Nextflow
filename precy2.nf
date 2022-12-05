@@ -126,7 +126,7 @@ process mdrun {
          -cpt 15 -pf ${workflow.runName}_pf.xvg \
          -px ${workflow.runName}_px.xvg \
          -plumed ${params.PLUMED} -multidir \${REPLICAS} \
-         -replex 2000 -hrex -append -quiet
+         -replex 2000 -hrex -noappend -quiet
   """
 }
 
@@ -141,14 +141,15 @@ process archive {
   
   """
   mkdir ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}
-  mv ${replica}${workflow.runName}*.xvg   ${replica}${workflow.runName}
+  mv ${replica}${workflow.runName}.tpr    ${replica}${workflow.runName}/${workflow.runName}.tpr
+  mv ${replica}${workflow.runName}*.edr   ${replica}${workflow.runName}/${workflow.runName}.edr
+  mv ${replica}${workflow.runName}*.gro   ${replica}${workflow.runName}/${workflow.runName}.gro
+  mv ${replica}${workflow.runName}*.log   ${replica}${workflow.runName}/${workflow.runName}.log
+  mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}/${workflow.runName}.cpt
+  mv ${replica}${workflow.runName}*.xtc   ${replica}${workflow.runName}/${workflow.runName}.xtc
+  mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}/${workflow.runName}.trr
+  mv ${replica}${workflow.runName}*_pf.xvg   ${replica}${workflow.runName}/${workflow.runName}_pf.xvg
+  mv ${replica}${workflow.runName}*_px.xvg   ${replica}${workflow.runName}/${workflow.runName}_px.xvg
   """
 }
 
