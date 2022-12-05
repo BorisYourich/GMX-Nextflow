@@ -116,7 +116,7 @@ process mdrun {
       CPI=""
   fi
   
-  sleep 15  
+  sleep infinity
   
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
