@@ -42,7 +42,7 @@ process grompp_params {
   NDX=`find ${replica} -maxdepth 1 -name "*.ndx"`
   
   if [ ! -z ${params.PREV} ]; then
-      CPT=`find ${replica}${params.PREV} -maxdepth 1 -name "${params.PREV}.cpt"`
+      CPT=`find ${replica} -maxdepth 1 -name "*.cpt"`
   else
       CPT="None"
   fi
@@ -75,7 +75,11 @@ process grompp {
   stdout
 
   script:
-  if (CPT == "None")
+  if (params.PREV == "")
+    """
+    echo ${replica}
+    """
+  else if (CPT == "None")
     """
     ${params.GMX} grompp -f ${MDP} \
                -c ${GRO} \
@@ -84,7 +88,6 @@ process grompp {
                -n ${NDX} \
                -o ${replica}${workflow.runName}.tpr -quiet -maxwarn ${MAXWARN}
     """
-    
   else
     """
     ${params.GMX} grompp -f ${MDP} \
