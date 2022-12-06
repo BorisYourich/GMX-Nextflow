@@ -165,9 +165,9 @@ process archive {
     mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}/${workflow.runName}.trr
     mv ${replica}${workflow.runName}_pf*.xvg   ${replica}${workflow.runName}/${workflow.runName}_pf.xvg
     mv ${replica}${workflow.runName}_px*.xvg   ${replica}${workflow.runName}/${workflow.runName}_px.xvg
-    mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}/${workflow.runName}.cpt
+    cp ${replica}${params.PREV}/${params.PREV}*.cpt   ${replica}${workflow.runName}/${workflow.runName}.cpt
+    cp ${replica}${params.PREV}/${params.PREV}*.gro ${replica}${workflow.runName}/${workflow.runName}.gro
     """
-    //cp ${replica}${params.PREV}/${params.PREV}*.gro ${replica}${workflow.runName}/${workflow.runName}.gro
 }
 
 
