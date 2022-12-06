@@ -75,7 +75,7 @@ process grompp {
   stdout
 
   script:
-  if (params.PREV == "")
+  if (params.PREV != "")
     """
     echo ${replica}
     """
