@@ -74,7 +74,9 @@ process grompp {
   script:
   if (params.PREV != "")
     """
-    echo ${replica}
+    ${params.GMX} convert-tpr -s ${replica}${params.PREV}/${params.PREV}.tpr \
+                              -o ${replica}${workflow.runName}.tpr\
+                              -nsteps `awk 'BEGIN {nsteps = 0} /nsteps/ {nsteps = \$3} END {print nsteps}' ${replica}us.mdp`
     """
   else if (CPT == "None")
     """
@@ -121,7 +123,7 @@ process mdrun {
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
   mpirun -iface eth0 -hosts \$(cat /etc/mpi/hostfile | paste -sd "," -) \
-         -np \${NP} gmx mdrun -ntomp 32 -v -deffnm ${workflow.runName} \
+         -np \${NP} ${params.GMX} mdrun -ntomp 32 -v -deffnm ${workflow.runName} \
          -cpo ${workflow.runName}.cpt \${CPI} \
          -cpt 15 -pf ${workflow.runName}_pf.xvg \
          -px ${workflow.runName}_px.xvg \
@@ -163,9 +165,9 @@ process archive {
     mv ${replica}${workflow.runName}*.trr   ${replica}${workflow.runName}/${workflow.runName}.trr
     mv ${replica}${workflow.runName}_pf*.xvg   ${replica}${workflow.runName}/${workflow.runName}_pf.xvg
     mv ${replica}${workflow.runName}_px*.xvg   ${replica}${workflow.runName}/${workflow.runName}_px.xvg
-    cp ${replica}${params.PREV}/${params.PREV}*.gro ${replica}${workflow.runName}/${workflow.runName}.gro
     mv ${replica}${workflow.runName}*.cpt   ${replica}${workflow.runName}/${workflow.runName}.cpt
     """
+    //cp ${replica}${params.PREV}/${params.PREV}*.gro ${replica}${workflow.runName}/${workflow.runName}.gro
 }
 
 
