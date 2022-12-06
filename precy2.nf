@@ -40,14 +40,11 @@ process grompp_params {
   GRO=`find ${replica} -maxdepth 1 -name "*.gro"`
   TOP=`find ${replica} -maxdepth 1 -name "*.top"`
   NDX=`find ${replica} -maxdepth 1 -name "*.ndx"`
+  CPT=`find ${replica} -maxdepth 1 -name "*.cpt"`
   
-  if [ ! -z ${params.PREV} ]; then
-      CPT=`find ${replica} -maxdepth 1 -name "*.cpt"`
-  else
+  if [ -z \${CPT} ]; then
       CPT="None"
   fi
-  
-  echo \${CPT}
   
   if [ ! -z ${params.REF} ]; then
       REF="${params.REF}"
