@@ -118,8 +118,6 @@ process mdrun {
       CPI=""
   fi
   
-  sleep 15
-  
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
   mpirun -iface eth0 -hosts \$(cat /etc/mpi/hostfile | paste -sd "," -) \
