@@ -121,7 +121,7 @@ process mdrun {
   REPLICAS=`ls -d -- ${workflow.launchDir}/${params.RE}/*/`
   NP=`ls -d -- ${workflow.launchDir}/${params.RE}/*/ | wc -l`
   mpirun -iface eth0 -hosts \$(cat /etc/mpi/hostfile | paste -sd "," -) \
-         -np \${NP} ${params.GMX} mdrun -ntomp 32 -v -deffnm ${workflow.runName} \
+         -np \${NP} ${params.GMX} mdrun -ntomp ${OMP_NUM_THREADS} -v -deffnm ${workflow.runName} \
          -cpo ${workflow.runName}.cpt \${CPI} \
          -cpt 15 -pf ${workflow.runName}_pf.xvg \
          -px ${workflow.runName}_px.xvg \
